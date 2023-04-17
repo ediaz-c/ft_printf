@@ -21,7 +21,7 @@ all:	$(NAME)
 $(NAME):	$(OBJS) $(INCLUDE)
 	$(LIB) -r $@ $?
 # BONUS:	$(BONUS_OBJS) $(OBJS)
-	$(LIB) -r $@ $?
+#	$(LIB) -r $@ $?
 %.o:%.c
 	$(CC) -c $(CFLAGS) $?
 clean:
