@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_put_un_nbr.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ediaz--c <ediaz--c@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: ediaz--c <ediaz--c@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/13 21:25:54 by ediaz--c          #+#    #+#             */
-/*   Updated: 2023/04/13 21:25:56 by ediaz--c         ###   ########.fr       */
+/*   Created: 2023/04/17 19:05:44 by ediaz--c          #+#    #+#             */
+/*   Updated: 2023/11/19 01:03:18 by ediaz--c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../includes/ft_printf.h"
 
-static int	ft_len_nbr(int nb)
+static int	ft_len_nbr(unsigned int nb)
 {
 	int	len;
 
 	len = 0;
-	if (nb <= 0)
-	{
-		nb = -nb;
-		len++;
-	}
+	if (nb == 0)
+		return (1);
 	while (nb)
 	{
 		nb /= 10;
@@ -30,29 +27,24 @@ static int	ft_len_nbr(int nb)
 	return (len);
 }
 
-static void	ft_print_nbr(int nb)
+static void	ft_print_nb(unsigned int nb)
 {
-	if (nb == INT_MIN)
-	{
-		ft_putstr("-2");
-		ft_putnbr(147483648);
-	}
-	else if (nb < 0)
+	if (nb < 0)
 	{
 		ft_putchar('-');
-		ft_putnbr(-nb);
+		ft_print_nb(-nb);
 	}
 	else if (nb > 9)
 	{
-		ft_putnbr(nb / 10);
+		ft_print_nb(nb / 10);
 		ft_putchar((nb % 10) + '0');
 	}
 	else
 		ft_putchar((nb % 10) + '0');
 }
 
-int	ft_putnbr(int nb)
+int	ft_put_un_nbr(unsigned int nb)
 {
-	ft_print_nbr(nb);
+	ft_print_nb(nb);
 	return (ft_len_nbr(nb));
 }

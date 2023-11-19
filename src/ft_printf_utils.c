@@ -1,19 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_printf_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ediaz--c <ediaz--c@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: ediaz--c <ediaz--c@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/13 21:27:03 by ediaz--c          #+#    #+#             */
-/*   Updated: 2023/04/13 21:27:05 by ediaz--c         ###   ########.fr       */
+/*   Created: 2023/04/13 21:24:21 by ediaz--c          #+#    #+#             */
+/*   Updated: 2023/11/19 01:03:18 by ediaz--c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../includes/ft_printf.h"
 
-int	ft_putchar(char c)
+int	ft_strlen(char *str)
 {
-	write(1, &c, 1);
-	return (1);
+	int	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
+}
+
+int	ft_nbr_digits(int nb)
+{
+	int	len;
+
+	len = 0;
+	while (nb)
+	{
+		len++;
+		nb /= 10;
+	}
+	return (len);
 }
